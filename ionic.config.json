@@ -1,0 +1,7 @@
+{
+  "name": "Trucka",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
