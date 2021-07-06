@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+
+  urlbackend: 'http://200.76.187.147:3000/api/', // ruta que conectar o consume la api de la carpeta Backend
 };
 
 /*

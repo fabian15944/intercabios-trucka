@@ -1,0 +1,117 @@
+<ion-header no-border>
+    <ion-toolbar color="shade">
+        <ion-buttons>
+            <ion-back-button defaultHref="/start"></ion-back-button>
+            <ion-title>Reporte de la unidad</ion-title>
+            <ion-img style="height: 40px; margin-center: 140px;" src="assets/logoTrucka.png"></ion-img>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content mode="ios">
+
+    <br>
+
+    <ion-grid fixed>
+        <ion-row>
+            <ion-col size="12" size-lg="12" size-md="12" size-sm="12">
+
+                <ion-card>
+                    <ion-card-content>
+
+                        <ion-card-subtitle class="centrado" color="danger">DATOS DE LA UNIDAD:</ion-card-subtitle>
+                        <br>
+
+                        <ion-card-subtitle class="fuente1">Número de la Unidad:</ion-card-subtitle>
+                        <ion-item>
+                            <ion-label class="fuente2">{{numUnidad}}</ion-label>
+                        </ion-item>
+
+                        <ion-card-subtitle class="fuente1">Sucursal:</ion-card-subtitle>
+                        <ion-item>
+                            <ion-label class="fuente2">{{sucursal}}</ion-label>
+                        </ion-item>
+                        <ion-card-subtitle class="fuente1">Fecha:</ion-card-subtitle>
+                        <ion-item>
+                            <ion-label class="fuente2">{{fecha }}</ion-label>
+                        </ion-item>
+                        <ion-card-subtitle class="fuente1">Reporte Generado Por:</ion-card-subtitle>
+                        <ion-item>
+                            <ion-label class="fuente2">{{encargado_reporte}}</ion-label>
+                        </ion-item>
+                        <ion-card-subtitle class="fuente1">Operador:</ion-card-subtitle>
+                        <ion-item>
+                            <ion-label class="fuente2">{{operador}}</ion-label>
+                        </ion-item>
+
+                    </ion-card-content>
+                    <br>
+
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <br>
+
+    <ion-grid>
+        <ion-row>
+            <ion-col class="ba" size="3">
+                Articulos
+            </ion-col>
+
+            <ion-col class="ba" size="2">
+                Estado
+            </ion-col>
+            <ion-col class="ba" size="2">
+                Daño
+            </ion-col>
+            <ion-col class="ba" size="2">
+                comentario
+            </ion-col>
+            <ion-col class="ba" size="3">
+                Fotografia
+            </ion-col>
+
+        </ion-row>
+        <ion-row *ngFor="let historial of rep.recordset index as i">
+            <ion-col class="row" size="3">
+                {{historial.nombre}}
+            </ion-col>
+
+            <ion-col class="row" size="2">
+                {{historial.estado}}
+            </ion-col>
+            <ion-col class="row" size="2">
+                {{historial.damage}}
+            </ion-col>
+            <ion-col class="row" size="2">
+                {{historial.comentario}}
+            </ion-col>
+
+            <ion-col class="row" size="3">
+                <ion-slides #slides *ngIf="historial.fotografia1 !== ''" pager="true" [options]="slideOpts"
+                    style="width: 130px;" (click)="Historial(i)">
+                    <ion-slide *ngIf="historial.fotografia1 !== ''">
+                        <img src="{{historial.fotografia1}}" style="height: 130px;">
+
+                    </ion-slide>
+                    <ion-slide *ngIf="historial.fotografia2 !== ''">
+                        <img src="{{historial.fotografia2}}" style="height: 130px;">
+
+                    </ion-slide>
+                    <ion-slide *ngIf="historial.fotografia3 !== ''">
+                        <img src="{{historial.fotografia3}}" style="height: 130px;">
+
+                    </ion-slide>
+                </ion-slides>
+            </ion-col>
+        </ion-row>
+
+
+    </ion-grid>
+
+
+
+
+
+</ion-content>
